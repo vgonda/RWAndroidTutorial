@@ -30,25 +30,6 @@
 
 package com.raywenderlich.android.rwandroidtutorial
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import org.koin.android.viewmodel.ext.android.viewModel
+interface Repository
 
-class MainActivity : AppCompatActivity() {
-
-  private val viewModel: MainViewModel by viewModel()
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-
-    viewModel.state.observe(this, Observer<UiModel>{ uiModel ->
-      render(uiModel)
-    })
-  }
-
-  private fun render(uiModel: UiModel) {
-  }
-}
-
+class RepositoryImpl : Repository

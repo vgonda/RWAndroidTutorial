@@ -33,7 +33,7 @@ package com.raywenderlich.android.rwandroidtutorial
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class MainViewModel(val repository: Repository) : ViewModel() {
 
   internal var state: MutableLiveData<UiModel> = MutableLiveData()
 

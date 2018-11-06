@@ -30,25 +30,12 @@
 
 package com.raywenderlich.android.rwandroidtutorial
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
-class MainActivity : AppCompatActivity() {
+val appModule = module {
 
-  private val viewModel: MainViewModel by viewModel()
+  single<Repository> { RepositoryImpl() }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-
-    viewModel.state.observe(this, Observer<UiModel>{ uiModel ->
-      render(uiModel)
-    })
-  }
-
-  private fun render(uiModel: UiModel) {
-  }
+  viewModel { MainViewModel(get()) }
 }
-
