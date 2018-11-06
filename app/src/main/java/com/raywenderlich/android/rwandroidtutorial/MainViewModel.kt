@@ -30,29 +30,11 @@
 
 package com.raywenderlich.android.rwandroidtutorial
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-/**
- * Main Screen
- */
-class MainActivity : AppCompatActivity() {
+class MainViewModel : ViewModel() {
 
-  private lateinit var viewModel: MainViewModel
+  internal var state: MutableLiveData<UiModel> = MutableLiveData()
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
-    viewModel.state.observe(this, Observer<UiModel>{ uiModel ->
-      render(uiModel)
-    })
-  }
-
-  private fun render(uiModel: UiModel) {
-  }
 }
-
